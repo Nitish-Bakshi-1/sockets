@@ -1,6 +1,6 @@
 import express from "express";
 const port = 3000;
-import { server } from "socket.io";
+import { Server } from "socket.io";
 import { createServer } from "http";
 
 const app = express();
