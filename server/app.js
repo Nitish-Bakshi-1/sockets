@@ -23,8 +23,17 @@ app.get("/", function (req, res) {
 });
 
 io.on("connection", (socket) => {
-  console.log("user connected");
-  console.log("ID:" + socket.id);
+  console.log("user connected", socket.id);
+  //   socket.emit("welcome", "welcome to the server" + socket.id);
+
+  socket.on("message", function (data) {
+    console.log(data);
+    io.emit("message", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("disconnected", socket.id);
+  });
 });
 
 server.listen(port, function () {
