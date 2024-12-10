@@ -3,7 +3,14 @@ import { io } from "socket.io-client";
 
 const App = () => {
   const socket = io("http://localhost:3000");
-  return <div></div>;
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("connected", socket.id);
+    });
+  });
+
+  return <div>App</div>;
 };
 
 export default App;
